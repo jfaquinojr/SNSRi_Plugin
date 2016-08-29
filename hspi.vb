@@ -11,6 +11,9 @@ Public Class HSPI
 
     'Implements IThermostatAPI           ' add this API if this plugin supports thermostats
 
+    Dim _api As New Api
+
+
     Public Function PluginFunction(ByVal proc As String, ByVal parms() As Object) As Object Implements IPlugInAPI.PluginFunction
         Try
             Dim ty As Type = Me.GetType
@@ -127,6 +130,8 @@ Public Class HSPI
                 ' parameter 4 = reference id
                 ' 
                 ' on seems to be 100 while off is 0
+
+                _api.InvokeChangeValue(parms(4), parms(2), DateTime.Now)
 
         End Select
     End Sub
