@@ -58,6 +58,9 @@ TryAgain:
 
             callback = clientCallback.ServiceProxy
             APIVersion = callback.APIVersion  ' will cause an error if not really connected
+
+            callback.RegisterEventCB(Enums.HSEvent.VALUE_CHANGE, "SNSRi", "")
+
         Catch ex As Exception
             Console.WriteLine("Cannot connect attempt " & Attempts.ToString & ": " & ex.Message)
             If ex.Message.ToLower.Contains("timeout occurred.") Then

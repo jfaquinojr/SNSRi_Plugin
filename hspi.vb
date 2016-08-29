@@ -111,9 +111,23 @@ Public Class HSPI
     End Sub
 
     Public Sub HSEvent(ByVal EventType As Enums.HSEvent, ByVal parms() As Object) Implements HomeSeerAPI.IPlugInAPI.HSEvent
-        Console.WriteLine("HSEvent: " & EventType.ToString)
+        Console.Write("HSEvent: " & EventType.ToString & "; Parameters: ")
+        For Each par As Object In parms
+            Console.Write(" " & par.ToString())
+        Next
+        Console.WriteLine()
+
         Select Case EventType
             Case Enums.HSEvent.VALUE_CHANGE
+
+                ' looks like parameters being passed are as follows
+                ' parameter 1 = value 1024
+                ' parameter 2 = new value
+                ' parameter 3 = old value
+                ' parameter 4 = reference id
+                ' 
+                ' on seems to be 100 while off is 0
+
         End Select
     End Sub
 
