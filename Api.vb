@@ -1,6 +1,7 @@
 ﻿Imports System.Net
 Imports System.Collections.Specialized
 Imports System.Configuration
+Imports System.Threading.Tasks
 
 Public Class Api
 
@@ -25,8 +26,8 @@ Public Class Api
                 values("NewStatus") = status
                 values("OccurredOn") = dateOccurred
 
-                'TODO: make async!
-                Dim response = client.UploadValues(changeEventUrl, values)
+                client.UploadValuesAsync(New Uri(changeEventUrl), values)
+
             End Using
 
         Catch ex As Exception
